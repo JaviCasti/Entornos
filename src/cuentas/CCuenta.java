@@ -62,6 +62,11 @@ public class CCuenta {
         saldo=sal;
         tipoInterés=tipo;
     }
+    
+    /**
+     * Asigna un nombre a la cuenta
+     * @param nom nombre de la cuenta
+     */
    
     public void asignarNombre(String nom)
     {
@@ -69,14 +74,22 @@ public class CCuenta {
     }
     
     
-
+    /**
+     * Devuelve el saldo de la cuenta
+     * @return saldo el saldo de la cuenta
+     */
     
      public double estado ()
     {
         return saldo;
     }
 
-    
+    /**
+     * Ingresa dinero a la cuenta
+     * @param cantidad la cantidad a ingresar
+     * @throws Exception
+     */
+     
     public void ingresar(double cantidad) throws Exception
     {
         if (cantidad<0){
@@ -85,7 +98,11 @@ public class CCuenta {
     }
 
 
-
+    /**
+     * Retira dinero de la cuenta
+     * @param cantidad la cantidad a retirar
+     * @throws Exception
+     */
     
     public void retirar (double cantidad) throws Exception
     {
@@ -95,6 +112,34 @@ public class CCuenta {
             throw new Exception ("No se hay suficiente saldo");}
         setSaldo(saldo - cantidad);
     }
+    
+    /**
+     * Administa ael ingreso/retirada de la cuenta
+     * @param miCuenta la cuenta a modificar
+     * @param cantidad la cantidad a tratar
+     * @param opcion la modificacion que se desea realizar
+     */
+
+	public static void operativa_cuenta(CCuenta miCuenta,float cantidad, int opcion){
+	    if(opcion==2){
+	        try 
+	        {
+	            miCuenta.retirar(cantidad);
+	        } catch (Exception e)
+	        {
+	            System.out.print("Fallo al retirar");
+	        }
+	    }else if(opcion==1){
+	        try
+	        {
+	            System.out.println("Ingreso en cuenta");
+	            miCuenta.ingresar(cantidad);
+	        } catch (Exception e)
+	        {
+	            System.out.print("Fallo al ingresar");
+	        }
+	    }
+	}
     
   
     

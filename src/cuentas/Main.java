@@ -37,11 +37,11 @@ public class Main {
                 if(opcion==1){
                     System.out.println("¿Cuánto desea ingresar?: ");
                     float ingresar=Integer.parseInt(dato.readLine());
-                    operativa_cuenta(cuenta1,ingresar,opcion);
+                    CCuenta.operativa_cuenta(cuenta1,ingresar,opcion);
                 }else if(opcion==2){
                     System.out.println("¿Cuátno desea retirar?: ");
                     float retirar=Integer.parseInt(dato.readLine());
-                    operativa_cuenta(cuenta1,retirar,opcion);
+                    CCuenta.operativa_cuenta(cuenta1,retirar,opcion);
                 }else if(opcion==3){
                     System.out.println("Finalizamos la ejecución");
                 }else{
@@ -67,25 +67,5 @@ public class Main {
         }while (opcion!=3);
         saldoActual = cuenta1.estado();
         System.out.println("El saldo actual es"+ saldoActual );
-    }
-    public static void operativa_cuenta(CCuenta miCuenta,float cantidad, int opcion){
-        if(opcion==2){
-            try 
-            {
-                miCuenta.retirar(cantidad);
-            } catch (Exception e)
-            {
-                System.out.print("Fallo al retirar");
-            }
-        }else if(opcion==1){
-            try
-            {
-                System.out.println("Ingreso en cuenta");
-                miCuenta.ingresar(cantidad);
-            } catch (Exception e)
-            {
-                System.out.print("Fallo al ingresar");
-            }
-        }
     }
 }
